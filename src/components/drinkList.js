@@ -29,7 +29,7 @@ const Home = (props) =>{
             <table className="table table-sm table-hover table-bordered">
               <thead>
                 <tr>
-                  <th scope="col">訂單編號</th>
+                  <th scope="col">#</th>
                   <th scope="col">名稱</th>
                   <th scope="col">價錢</th>
                   <th scope="col">
@@ -41,17 +41,21 @@ const Home = (props) =>{
               </thead>
               <tbody>
                 {
-                  order.map((data) => {
+                  order.map((data, idx) => {
                     // console.log(data, 'l')
                     let id = data.id
                     return(
                       <tr key={data.id}>
-                        <th scope="row">{data.id}</th>
+                        <th scope="row">{idx + 1}</th>
                         <td>{data.name}</td>
                         <td>{data.price}</td>
                         <td>
-                          <Link className='btn btn-primary btn-sm' to={`/Form?method=U&id=${id}`} onClick={() => {handleCheck(data)}}>修改</Link> 
-                          <button className='btn btn-danger btn-sm' onClick={() => {getDelete(id)}}>刪除</button>
+                          <span className='onlytBtn'>
+                            <Link className='btn btn-primary btn-sm' to={`/Form?method=U&id=${id}`} onClick={() => {handleCheck(data)}}>修改</Link> 
+                          </span>
+                          <span className='onlytBtn'>
+                            <button className='btn btn-danger btn-sm' onClick={() => {getDelete(id)}}>刪除</button>
+                          </span>
                         </td>
                       </tr>
                     )

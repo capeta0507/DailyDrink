@@ -1,5 +1,4 @@
 import React,{ useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Select from 'react-select'
 
 const drink = [
@@ -16,9 +15,9 @@ const drink = [
 ]
 
 const price = [
-  { value: '30', label: '30' },
-  { value: '45', label: '45' },
-  { value: '60', label: '60' }
+  { value: '30', label: '小杯 30' },
+  { value: '45', label: '中杯 45' },
+  { value: '60', label: '大杯 60' }
 ]
 
 const Form = (props) => {
@@ -73,84 +72,81 @@ const Form = (props) => {
     props.onHistory.history.push('/')
   }
   return (
-    <div className="container myForm">
+    <div className="container">
       <h1 className="text-center">DailyDrink</h1>
+      <div className="row mt-3 myForm ">
       {(() => {
         if(getMethod === 'U') {
           return (
             <>
-              <div className="row mt-3">
-                <div className="col-3"></div>
-                <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">飲品：</label>
-                <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <Select
-                    placeholder='選擇飲品'
-                    options={drink}
-                    value={{ label: myDrink, value: myDrink }}
-                    onChange={(e) => {
-                      setMyDrink(e.value)
-                    }}
-                  />
-                </div>
-                <div className="col-4"></div>
+              <div className="block"></div>
+              <label className="myLabel">飲品：</label>
+              <div className="myInput pl-0">
+                <Select
+                  placeholder='選擇飲品'
+                  options={drink}
+                  value={{ label: myDrink, value: myDrink }}
+                  onChange={(e) => {
+                    setMyDrink(e.value)
+                  }}
+                />
               </div>
-              <div className="row mt-3">
-                <div className="col-3"></div>
-                <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">單價：</label>
-                <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <Select
-                    placeholder='單價'
-                    options={price}
-                    value={{ label: myUnitPrice, value: myUnitPrice }}
-                    onChange={(e) => {
-                      setUnitPrice(e.value)
-                      setMyPrice(e.value*myNum)
-                    }}
-                  />
-                </div>
-                <div className="col-4"></div>
+              <div className="block"></div>
+              <div className="block"></div>
+              <label className="myLabel">單價：</label>
+              <div className="myInput">
+                <Select
+                  placeholder='單價'
+                  options={price}
+                  value={{ label: myUnitPrice, value: myUnitPrice }}
+                  onChange={(e) => {
+                    setUnitPrice(e.value)
+                    setMyPrice(e.value*myNum)
+                  }}
+                />
               </div>
+              <div className="block"></div>
+              
             </>
           )
         } else {
           return (
             <>
-              <div className="row mt-3">
-                <div className="col-3"></div>
-                <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">飲品：</label>
-                <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <Select
-                    placeholder='選擇飲品'
-                    options={drink}
-                    onChange={(e) => {
-                      setMyDrink(e.value)
-                    }}
-                    />
-                </div>
-                <div className="col-4"></div>
+              <div className="block"></div>
+              <label className="myLabel">飲品：</label>
+              <div className="myInput">
+                <Select
+                  placeholder='選擇飲品'
+                  options={drink}
+                  onChange={(e) => {
+                    setMyDrink(e.value)
+                  }}
+                  />
               </div>
-              <div className="row mt-3">
-                <div className="col-3"></div>
-                <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">單價：</label>
-                <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <Select
-                    placeholder='單價'
-                    options={price}
-                    onChange={(e) => {
-                      setUnitPrice(e.value)
-                      setMyPrice(e.value*myNum)
-                  }} />
-                </div>
-                <div className="col-4"></div>
+              <div className="block"></div>
+            
+            
+              <div className="block"></div>
+              <label className="myLabel">單價：</label>
+              <div className="myInput">
+                <Select
+                  placeholder='單價'
+                  options={price}
+                  onChange={(e) => {
+                    setUnitPrice(e.value)
+                    setMyPrice(e.value*myNum)
+                }} />
               </div>
+              <div className="block"></div>
+              
             </>
           )
         }
       })()}
-      <div className="row mt-3">
-        <div className="col-3"></div>
-        <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">數量：</label>
-        <div className="col-lg-3 col-sm-3 col-3 pl-0">
+      
+        <div className="block"></div>
+        <label className="myLabel">數量：</label>
+        <div className="myInput">
           <input
           type="number"
           className="form-control"
@@ -160,12 +156,12 @@ const Form = (props) => {
             setMyPrice(e.target.value*myUnitPrice)
           }} />
         </div>
-        <div className="col-4"></div>
-      </div>
-      <div className="row mt-3">
-        <div className="col-3"></div>
-        <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">總價：</label>
-        <div className="col-lg-3 col-sm-3 col-3 pl-0">
+        <div className="block"></div>
+      
+      
+        <div className="block"></div>
+        <label className="myLabel">總價：</label>
+        <div className="myInput">
           <input
             type="text"
             className="form-control"
@@ -174,37 +170,42 @@ const Form = (props) => {
               setMyPrice(e.target.value)
             }} disabled />
         </div>
-        <div className="col-4"></div>
-      </div>
-      <div className="row mt-3">
-        <div className="col-3"></div>
-        <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">備註：</label>
-        <div className="col-lg-3 col-sm-3 col-3 pl-0">
+        <div className="block"></div>
+      
+      
+        <div className="block"></div>
+        <label className="myLabel">備註：</label>
+        <div className="myInput">
           <textarea className="form-control" onChange={(e) => {
             setMyRemarks(e.target.value)
           }} />
         </div>
-        <div className="col-4"></div>
-      </div>
+        <div className="block"></div>
+      
       <div className="myBtn text-center">
-        {(() => {
-          if(getMethod === 'U') {
-            return (
-              <button
-                className="btn btn-success"
-                onClick={update}>修改</button>
-            )
-          } else {
-            return (
-              <button
-                className="btn btn-success"
-                onClick={send}>新增</button>
-            )
-          }
-        })()}
-        <Link className="btn btn-warning" to='/'>
-          返回
-        </Link>
+        <span className='onlytBtn'>
+          {(() => {
+            if(getMethod === 'U') {
+              return (
+                <button
+                  className="btn btn-success"
+                  onClick={update}>修改</button>
+              )
+            } else {
+              return (
+                <button
+                  className="btn btn-success"
+                  onClick={send}>新增</button>
+              )
+            }
+          })()}
+        </span>
+        <span className='onlytBtn'>
+          <button className="btn btn-warning" onClick={() => {props.onHistory.history.push('/')}}>
+            返回
+          </button>
+        </span>
+      </div>
       </div>
     </div>
   )

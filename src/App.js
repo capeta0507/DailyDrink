@@ -15,7 +15,15 @@ class App extends Component {
           unitPrice: 30,
           num: 4,
           price: 120,
-          remarks: ""
+          remarks: "感謝"
+        },
+        { 
+          id: 1566699818973,
+          name: "多多綠",
+          unitPrice: 45,
+          num: 2,
+          price: 90,
+          remarks: "感謝"
         }
       ],
       orderItem:{
