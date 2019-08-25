@@ -1,7 +1,7 @@
 # 緯德科技
 [gitHub 連結](https://github.com/capeta0507/DailyDrink)
 #### 進入首頁，可看到整個訂購清單（畫面上為預設資料）
-![](https://i.imgur.com/iNjSHzs.png)
+![](https://i.imgur.com/YQfWY0M.png)
 
 #### 1.新增
 點選首頁右上方的『新增』按鈕，即可進入以下頁面
