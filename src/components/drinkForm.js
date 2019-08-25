@@ -3,16 +3,22 @@ import { Link } from 'react-router-dom';
 import Select from 'react-select'
 
 const drink = [
-  { value: '珍珠奶茶', label: '珍珠奶茶', price: 30 },
-  { value: '茉莉綠茶', label: '茉莉綠茶', price: 40 },
-  { value: '黃金烏龍', label: '黃金烏龍', price: 40 },
-  { value: '多多綠', label: '多多綠', price: 35 },
-  { value: '紅茶拿鐵', label: '紅茶拿鐵', price: 40 },
-  { value: '綠茶拿鐵', label: '綠茶拿鐵', price: 35 },
-  { value: '布丁紅茶', label: '布丁紅茶', price: 35 },
-  { value: '檸檬汁', label: '檸檬汁', price: 40 },
-  { value: '觀音奶茶', label: '觀音奶茶', price: 35 },
-  { value: '百香綠茶', label: '百香綠茶', price: 35 }
+  { value: '珍珠奶茶', label: '珍珠奶茶' },
+  { value: '茉莉綠茶', label: '茉莉綠茶' },
+  { value: '黃金烏龍', label: '黃金烏龍' },
+  { value: '多多綠', label: '多多綠' },
+  { value: '紅茶拿鐵', label: '紅茶拿鐵' },
+  { value: '綠茶拿鐵', label: '綠茶拿鐵' },
+  { value: '布丁紅茶', label: '布丁紅茶' },
+  { value: '檸檬汁', label: '檸檬汁' },
+  { value: '觀音奶茶', label: '觀音奶茶' },
+  { value: '百香綠茶', label: '百香綠茶' }
+]
+
+const price = [
+  { value: '30', label: '30' },
+  { value: '45', label: '45' },
+  { value: '60', label: '60' }
 ]
 
 const Form = (props) => {
@@ -54,7 +60,6 @@ const Form = (props) => {
     let id = myid
     props.sendOrder(id, drink, unitPrice, num, price, remarks)
     props.onHistory.history.push('/')
-    // console.log(props.onHistory.history.push, 'props')
   }
 
   const update = () => {
@@ -85,7 +90,7 @@ const Form = (props) => {
                     onChange={(e) => {
                       setMyDrink(e.value)
                     }}
-                    />
+                  />
                 </div>
                 <div className="col-4"></div>
               </div>
@@ -93,62 +98,17 @@ const Form = (props) => {
                 <div className="col-3"></div>
                 <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">單價：</label>
                 <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <input type="number"
-                    className="form-control"
-                    value={myUnitPrice} placeholder=""
+                  <Select
+                    placeholder='單價'
+                    options={price}
+                    value={{ label: myUnitPrice, value: myUnitPrice }}
                     onChange={(e) => {
-                      setUnitPrice(e.target.value)
-                      setMyPrice(e.target.value*myNum)
-                    }} />
+                      setUnitPrice(e.value)
+                      setMyPrice(e.value*myNum)
+                    }}
+                  />
                 </div>
                 <div className="col-4"></div>
-              </div>
-              <div className="row mt-3">
-                <div className="col-3"></div>
-                <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">數量：</label>
-                <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <input
-                  type="number"
-                  className="form-control"
-                  value={myNum} placeholder=""
-                  onChange={(e) => {
-                    setMyNum(e.target.value)
-                    setMyPrice(e.target.value*myUnitPrice)
-                  }} />
-                </div>
-                <div className="col-4"></div>
-              </div>
-              <div className="row mt-3">
-                <div className="col-3"></div>
-                <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">總價：</label>
-                <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={myPrice} placeholder=""
-                    onChange={(e) => {
-                      setMyPrice(e.target.value)
-                    }} disabled />
-                </div>
-                <div className="col-4"></div>
-              </div>
-              <div className="row mt-3">
-                <div className="col-3"></div>
-                <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">備註：</label>
-                <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <textarea className="form-control" onChange={(e) => {
-                    setMyRemarks(e.target.value)
-                  }} />
-                </div>
-                <div className="col-4"></div>
-              </div>
-              <div className="myBtn text-center">
-                <button
-                  className="btn btn-success"
-                  onClick={update}>修改</button>
-                <Link className="btn btn-warning" to='/'>
-                  返回
-                </Link>
               </div>
             </>
           )
@@ -173,58 +133,79 @@ const Form = (props) => {
                 <div className="col-3"></div>
                 <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">單價：</label>
                 <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <input type="number" className="form-control" value={myUnitPrice} placeholder="" onChange={(e) => {
-                    setUnitPrice(e.target.value)
-                    setMyPrice(e.target.value*myNum)
+                  <Select
+                    placeholder='單價'
+                    options={price}
+                    onChange={(e) => {
+                      setUnitPrice(e.value)
+                      setMyPrice(e.value*myNum)
                   }} />
                 </div>
                 <div className="col-4"></div>
-              </div>
-              <div className="row mt-3">
-                <div className="col-3"></div>
-                <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">數量：</label>
-                <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <input type="number" className="form-control" value={myNum} placeholder="" onChange={(e) => {
-                    setMyNum(e.target.value)
-                    setMyPrice(e.target.value*myNum)
-                  }} /> />
-                </div>
-                <div className="col-4"></div>
-              </div>
-              <div className="row mt-3">
-                <div className="col-3"></div>
-                <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">總價：</label>
-                <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={myPrice} placeholder=""
-                    onChange={(e) => {setMyPrice(e.target.value)}} disabled />
-                </div>
-                <div className="col-4"></div>
-              </div>
-              <div className="row mt-3">
-                <div className="col-3"></div>
-                <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">備註：</label>
-                <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <textarea className="form-control" onChange={(e) => {
-                    setMyRemarks(e.target.value)
-                  }} />
-                </div>
-                <div className="col-4"></div>
-              </div>
-              <div className="myBtn text-center">
-                <button
-                  className="btn btn-success"
-                  onClick={send}>新增</button>
-                <Link className="btn btn-warning" to='/'>
-                  返回
-                </Link>
               </div>
             </>
           )
         }
       })()}
+      <div className="row mt-3">
+        <div className="col-3"></div>
+        <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">數量：</label>
+        <div className="col-lg-3 col-sm-3 col-3 pl-0">
+          <input
+          type="number"
+          className="form-control"
+          value={myNum} placeholder=""
+          onChange={(e) => {
+            setMyNum(e.target.value)
+            setMyPrice(e.target.value*myUnitPrice)
+          }} />
+        </div>
+        <div className="col-4"></div>
+      </div>
+      <div className="row mt-3">
+        <div className="col-3"></div>
+        <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">總價：</label>
+        <div className="col-lg-3 col-sm-3 col-3 pl-0">
+          <input
+            type="text"
+            className="form-control"
+            value={myPrice} placeholder=""
+            onChange={(e) => {
+              setMyPrice(e.target.value)
+            }} disabled />
+        </div>
+        <div className="col-4"></div>
+      </div>
+      <div className="row mt-3">
+        <div className="col-3"></div>
+        <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">備註：</label>
+        <div className="col-lg-3 col-sm-3 col-3 pl-0">
+          <textarea className="form-control" onChange={(e) => {
+            setMyRemarks(e.target.value)
+          }} />
+        </div>
+        <div className="col-4"></div>
+      </div>
+      <div className="myBtn text-center">
+        {(() => {
+          if(getMethod === 'U') {
+            return (
+              <button
+                className="btn btn-success"
+                onClick={update}>修改</button>
+            )
+          } else {
+            return (
+              <button
+                className="btn btn-success"
+                onClick={send}>新增</button>
+            )
+          }
+        })()}
+        <Link className="btn btn-warning" to='/'>
+          返回
+        </Link>
+      </div>
     </div>
   )
 }

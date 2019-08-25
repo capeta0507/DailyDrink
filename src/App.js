@@ -12,9 +12,9 @@ class App extends Component {
         { 
           id: 1566699818972,
           name: "珍珠奶茶",
-          unitPrice: 20,
+          unitPrice: 30,
           num: 4,
-          price: 80,
+          price: 120,
           remarks: ""
         }
       ],

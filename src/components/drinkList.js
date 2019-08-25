@@ -25,11 +25,11 @@ const Home = (props) =>{
       <div className="row">
         <div className="col-12 center">
           <h1>DailyDrink</h1>
-          <div id="myDiv">
-            <table className="table table-sm table-hover">
+          <div className="myList">
+            <table className="table table-sm table-hover table-bordered">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">訂單編號</th>
                   <th scope="col">名稱</th>
                   <th scope="col">價錢</th>
                   <th scope="col">
