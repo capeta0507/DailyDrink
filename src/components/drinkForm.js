@@ -41,13 +41,12 @@ const Form = (props) => {
     // console.log('getId', getId);
 
   useEffect(() => {
-    let item = props.orderItem
     setMyDrink(props.orderItem.name)
     setUnitPrice(props.orderItem.unitPrice)
     setMyNum(props.orderItem.num)
     setMyPrice(props.orderItem.price)
     setMyRemarks(props.orderItem.remarks)
-    console.log(item, 'item')
+    console.log(props.orderItem.remarks, 'item')
   },[1])
 
   const send = () => {
@@ -176,7 +175,7 @@ const Form = (props) => {
         <div className="block"></div>
         <label className="myLabel">備註：</label>
         <div className="myInput">
-          <textarea className="form-control" onChange={(e) => {
+          <textarea className="form-control" value={myRemarks} onChange={(e) => {
             setMyRemarks(e.target.value)
           }} />
         </div>
