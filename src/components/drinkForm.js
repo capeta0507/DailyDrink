@@ -187,20 +187,20 @@ const Form = (props) => {
             if(getMethod === 'U') {
               return (
                 <button
-                  className="btn btn-success"
+                  className="myBtn getedit"
                   onClick={update}>修改</button>
               )
             } else {
               return (
                 <button
-                  className="btn btn-success"
+                  className="myBtn getcreate"
                   onClick={send}>新增</button>
               )
             }
           })()}
         </span>
         <span className='onlytBtn'>
-          <button className="btn btn-warning" onClick={() => {props.onHistory.history.push('/')}}>
+          <button className="myBtn getback" onClick={() => {props.onHistory.history.push('/')}}>
             返回
           </button>
         </span>
