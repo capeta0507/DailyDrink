@@ -10,7 +10,7 @@ class App extends Component {
     this.state={
       getOrder:[
         { 
-          id: 1,
+          id: 1566699818972,
           name: "珍珠奶茶",
           unitPrice: 20,
           num: 4,
@@ -45,11 +45,37 @@ class App extends Component {
     // console.log(this.state.getOrder)
   }
   myDelete = (id) => {
-    this.setState({
-      getOrder : this.state.getOrder.filter((order) => {
-        return (order.id !== id)
-      })
-    })
+   
+    var myid = id;
+    let order = this.state.getOrder
+    console.log('order', order)
+
+    var myIndex = find_id(myid);
+    if (myIndex >=0){
+      console.log("myIndex => ",myIndex);
+      // console.log(orders[myIndex].name); 
+       let newGetOrder = this.state.getOrder;
+       let splicorder = newGetOrder.splice(myIndex,1);
+       console.log('splicorder', splicorder)
+      this.setState({
+        getOrder : newGetOrder
+      })  
+      
+    }else {
+        console.log("data not found ...",myIndex);
+    }
+
+    function find_id(xid) {
+      for(let x=0;x<order.length;x++){
+        // console.log(orders[x]);
+        console.log("for loop x -> ",x);
+        if (order[x].id === xid) {
+            // console.log("find the data..." , x);
+            return x;
+        }
+      }
+      return -1;
+    }
   }
   myCheck = (data) => {
     console.log(data)
@@ -58,22 +84,43 @@ class App extends Component {
     })
   }
   myUpdate = (xid, xdrink, xunitPrice, xnum, xprice, xremarks) => {
-    console.log(xdrink)
-    let newOrder = [...this.state.orderItem]
-    for(let x = 0;x<newOrder.length;x++){
-      if(newOrder[x].id === xid){
-        newOrder[x].name= xdrink;
-        newOrder[x].unitPrice= xunitPrice;
-        newOrder[x].num= xnum;
-        newOrder[x].price= xprice;
-        newOrder[x].remarks= xremarks;
-      }
+    console.log(xid)
+    let newOrder = this.state.getOrder;
+    let order = this.state.getOrder;
+    var myIndex = find_id(xid);
+    if (myIndex >=0){
+      console.log("myIndex => ",myIndex);
+      let neworder = this.state.getOrder;
+      console.log('neworder', neworder[myIndex])
+      neworder[myIndex].id = xid
+      neworder[myIndex].name = xdrink
+      neworder[myIndex].unitPrice = xunitPrice
+      neworder[myIndex].num = xnum
+      neworder[myIndex].price = xprice
+      neworder[myIndex].remarks = xremarks
+      this.setState({
+        getOrder: neworder
+      })
+      // console.log(orders[myIndex].name);
+    }else {
+        console.log("data not found ...",myIndex);
     }
-    this.setState({
-      getOrder: newOrder
-    })
+
+    function find_id(id) {
+      console.log('find', id)
+      for(let x=0;x<order.length;x++){
+        // console.log(orders[x]);
+        console.log("for loop x -> ",x, order[x].id, id);
+        if (order[x].id == id) {
+            // console.log("find the data..." , x);
+            return x;
+        }
+      }
+      return -1;
+    }
     console.log('newOrder', newOrder)
   }
+  
   render() {
     return (
       <BrowserRouter>

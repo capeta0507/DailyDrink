@@ -93,7 +93,13 @@ const Form = (props) => {
                 <div className="col-3"></div>
                 <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">單價：</label>
                 <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <input type="number" className="form-control" value={myUnitPrice} placeholder="" onChange={(e) => {setUnitPrice(e.target.value)}} />
+                  <input type="number"
+                    className="form-control"
+                    value={myUnitPrice} placeholder=""
+                    onChange={(e) => {
+                      setUnitPrice(e.target.value)
+                      setMyPrice(e.target.value*myNum)
+                    }} />
                 </div>
                 <div className="col-4"></div>
               </div>
@@ -101,7 +107,14 @@ const Form = (props) => {
                 <div className="col-3"></div>
                 <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">數量：</label>
                 <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <input type="number" className="form-control" value={myNum} placeholder="" onChange={(e) => {setMyNum(e.target.value)}} />
+                  <input
+                  type="number"
+                  className="form-control"
+                  value={myNum} placeholder=""
+                  onChange={(e) => {
+                    setMyNum(e.target.value)
+                    setMyPrice(e.target.value*myUnitPrice)
+                  }} />
                 </div>
                 <div className="col-4"></div>
               </div>
@@ -113,7 +126,9 @@ const Form = (props) => {
                     type="text"
                     className="form-control"
                     value={myPrice} placeholder=""
-                    onChange={(e) => {setMyPrice(e.target.value)}} disabled />
+                    onChange={(e) => {
+                      setMyPrice(e.target.value)
+                    }} disabled />
                 </div>
                 <div className="col-4"></div>
               </div>
@@ -158,7 +173,10 @@ const Form = (props) => {
                 <div className="col-3"></div>
                 <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">單價：</label>
                 <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <input type="number" className="form-control" value={myUnitPrice} placeholder="" onChange={(e) => {setUnitPrice(e.target.value)}} />
+                  <input type="number" className="form-control" value={myUnitPrice} placeholder="" onChange={(e) => {
+                    setUnitPrice(e.target.value)
+                    setMyPrice(e.target.value*myNum)
+                  }} />
                 </div>
                 <div className="col-4"></div>
               </div>
@@ -166,7 +184,10 @@ const Form = (props) => {
                 <div className="col-3"></div>
                 <label className="col-lg-2 col-sm-2 col-2 col-form-label text-right px-0">數量：</label>
                 <div className="col-lg-3 col-sm-3 col-3 pl-0">
-                  <input type="number" className="form-control" value={myNum} placeholder="" onChange={(e) => {setMyNum(e.target.value)}} />
+                  <input type="number" className="form-control" value={myNum} placeholder="" onChange={(e) => {
+                    setMyNum(e.target.value)
+                    setMyPrice(e.target.value*myNum)
+                  }} /> />
                 </div>
                 <div className="col-4"></div>
               </div>
