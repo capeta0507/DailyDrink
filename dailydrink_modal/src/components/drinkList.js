@@ -1,27 +1,55 @@
 import React, {useState} from 'react'
-import { Modal, Button } from 'react-bootstrap'
+// import { Modal, Button } from 'react-bootstrap'
 import MyModal from './modal'
 
 const Home = (props) =>{
-
-  const [show, setShow] = useState(false);
+  // 新型態的 state
+  // show -> state 的變數
+  // setShow -> setState方法取改變 show
+  // useState(false) 採用 useState指令，並給予初始值(false)
+  // const [show, setShow] = useState(false);
   const [modalShow, setModalShow] = useState(false);
-  const [item,setItem] = useState({})
-  const [orderItem,setOrderItem] = useState([])
-  const [method, setMethod] = useState('');
-
-  const handleClose = () => setShow(false);
-  const newModalShow = () => {
-    setMethod('C');
-    setItem({
+  // const [item,setItem] = useState({
+  //     id:0,
+  //     name:'',
+  //     unitPrice: 0,
+  //     num: 1,
+  //     price:0,
+  //     remarks:''
+  // })
+  const [orderItem,setOrderItem] = useState({
       id:0,
-      name:'布丁紅茶',
+      name:'',
       unitPrice: 0,
       num: 1,
       price:0,
       remarks:''
-    })
-    setOrderItem(item)
+  })
+  const [method, setMethod] = useState('C');
+
+  // const handleClose = () => setShow(false);
+  // 新增 一筆空白的紀錄，給Modal畫面顯示
+  const newModalShow = () => {
+    setMethod('C');
+    // setItem({
+    //   id:0,
+    //   name:'',
+    //   unitPrice: 0,
+    //   num: 1,
+    //   price:0,
+    //   remarks:''
+    // })
+    // setOrderItem(item) ->改寫
+    setOrderItem(
+      {
+        id:0,
+        name:'',
+        unitPrice: 0,
+        num: 1,
+        price:0,
+        remarks:''
+      }
+    )
     setModalShow(true)
   }
   const handModalShow = (data, mothod) => {
@@ -33,6 +61,7 @@ const Home = (props) =>{
 
   let order = props.getOrder
   // console.log(order, 'order')
+  // 回呼 刪除一筆紀錄
   const getDelete = (id) => {
     // console.log(id)
     props.myDelete(id)
@@ -66,7 +95,7 @@ const Home = (props) =>{
               {
                 order.map((data, idx) => {
                   // console.log(data, 'l')
-                  let id = data.id
+                  // let id = data.id
                   return(
                     <tr key={data.id}>
                       <th scope="row">{idx + 1}</th>
@@ -79,19 +108,19 @@ const Home = (props) =>{
                         <span className='onlytBtn'>
                           <button className='myBtn getdelete' onClick={() => {handModalShow(data, 'D')}}>刪除</button>
                         </span>
-                        <Modal show={show} onHide={handleClose}>
-                        <Modal.Header closeButton>
-                          <Modal.Title>是否要刪除</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Footer>
-                          <Button variant="secondary" onClick={handleClose}>
-                            否
-                          </Button>
-                          <Button variant="primary" onClick={handleClose}>
-                            是
-                          </Button>
-                        </Modal.Footer>
-                      </Modal>
+                        {/* <Modal show={show} onHide={handleClose}>
+                          <Modal.Header closeButton>
+                            <Modal.Title>是否要刪除</Modal.Title>
+                          </Modal.Header>
+                          <Modal.Footer>
+                            <Button variant="secondary" onClick={handleClose}>
+                              否
+                            </Button>
+                            <Button variant="primary" onClick={handleClose}>
+                              是
+                            </Button>
+                          </Modal.Footer>
+                        </Modal> */}
                       </td>
                     </tr>
                   )
