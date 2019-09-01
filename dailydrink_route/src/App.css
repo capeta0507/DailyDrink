@@ -1,0 +1,105 @@
+.myForm {
+  border: 1px solid black;
+  margin: 10px auto;
+  padding: 10px;
+}
+.myBtn {
+  margin: 10px auto;
+}
+.onlytBtn {
+  padding: 0 2px;
+}
+.center {
+  text-align: center;
+}
+.myList {
+  width: 100%;
+  text-align: center;
+}
+.myTable {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+.myTable , td, th {
+  border: 1px solid #dee2e6;
+}
+.block {
+  width: 20%;
+}
+.myLabel{
+  width: 15%;
+  padding: 0 ;
+  text-align: right;
+  line-height: 40px;
+}
+.myInput{
+  width: 40%;
+  padding: 0 ;
+}
+.myBtn {
+  padding: .25rem .5rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+  color: #fff;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: all .5s;
+}
+.myBtn:hover{
+  color: #fff;
+  text-decoration: none;
+}
+.getcreate {
+  background-color: rgb(8, 170, 8);
+  border: 1px solid green;
+}
+.getcreate:hover {
+  background-color: rgb(0, 122, 0);
+  border: 1px solid green;
+}
+.getedit{
+  background-color: rgb(57, 57, 255);
+  border: 1px solid blue;
+}
+.getedit:hover{
+  background-color: rgb(0, 0, 195);
+  border: 1px solid blue;
+}
+.getdelete{
+  background-color: rgb(255, 71, 71);
+  border: 1px solid red;
+}
+.getdelete:hover{
+  background-color: rgb(197, 0, 0);
+  border: 1px solid red;
+}
+.getback{
+  background-color: rgb(250, 182, 54);
+  border: 1px solid orange;
+}
+.getback:hover{
+  background-color: rgb(179, 116, 0);
+  border: 1px solid orange;
+}
+@media screen and (max-width: 600px){
+  .block {
+    width: 10%;
+  }
+  .myLabel{
+    width: 20%;
+    padding: 0 ;
+    text-align: right;
+    line-height: 40px;
+  }
+  .myInput{
+    width: 60%;
+    padding: 0 ;
+  }
+}
