@@ -53,10 +53,14 @@ const Home = (props) =>{
     setModalShow(true)
   }
   const handModalShow = (data, mothod) => {
-    setModalShow(true)
     // console.log(data, mothod)
+    // SetState OrderItem, Method
     setOrderItem(data)
     setMethod(mothod)
+    
+    setModalShow(true)
+    
+
   }
 
   let order = props.getOrder
