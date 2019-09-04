@@ -34,7 +34,7 @@ const MyModal = (props) => {
   useEffect(() => {
     if(props.method === 'C') {
       setMyId(Date.now())
-      setMyDrink(props.orderItem.name)
+      setMyDrink(props.orderItem.drink)
       setUnitPrice(props.orderItem.unitPrice)
       setMyNum(props.orderItem.num)
       setMyPrice(props.orderItem.price)
