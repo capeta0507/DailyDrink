@@ -320,10 +320,10 @@ class App extends Component {
                               placeholder='單價'
                               options={price}
                               onChange={(e) => {
-                                let num = this.state.num
+                                let num = this.state.myNum
                                 this.setState({
-                                  unitPrice: e.value,
-                                  price: e.value*num
+                                  myUnitPrice: e.value,
+                                  myPrice: e.value*num
                                 })
                             }} /> 
                           )
@@ -335,10 +335,10 @@ class App extends Component {
                               options={price}
                               value={{ label: this.state.myUnitPrice, value: this.state.myUnitPrice }}
                               onChange={(e) => {
-                                let num = this.state.num 
+                                let num = this.state.myNum 
                                 this.setState({
-                                  unitPrice: e.value,
-                                  price: e.value*num
+                                  myUnitPrice: e.value,
+                                  myPrice: e.value*num
                                 })
                             }} /> 
                           )
@@ -354,9 +354,10 @@ class App extends Component {
                     onChange={(e) => {
                       let unitPrice = this.state.myUnitPrice
                       this.setState({
-                        num: e.target.value,
-                        price: e.target.value*unitPrice
+                        myNum: e.target.value,
+                        myPrice: e.target.value*unitPrice
                       })
+                      console.log(e.target.value)
                     }} />
                   </div>
                   <label className="myLabel">總價：</label>
@@ -366,10 +367,8 @@ class App extends Component {
                       className="form-control"
                       value={this.state.myPrice} placeholder=""
                       onChange={(e) => {
-                        let unitPrice = this.state.myUnitPrice
                         this.setState({
-                          num: e.target.value,
-                          price: e.target.value*unitPrice
+                          myPrice: e.target.value
                         })
                       }} disabled />
                   </div>
