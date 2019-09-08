@@ -114,7 +114,7 @@ class App extends Component {
     // console.log('newOrder', newOrder)
     this.setState({
       getOrder : this.state.getOrder.concat(newOrder),
-      omyid: Date.now(),
+      myid: Date.now(),
       myDrink: '',
       myUnitPrice: 0,
       myNum: 1,
@@ -177,8 +177,19 @@ class App extends Component {
     var myid = this.state.myid;
     let order = this.state.getOrder
     // console.log('order', order)
+    var theIndex = (xid) =>{
+      for(let x=0;x<order.length;x++){
+        // console.log(orders[x]);
+        console.log("for loop x -> ",x, order[x].id, xid);
+        if (order[x].id == xid) {
+            // console.log("find the data..." , x);
+            return x;
+        }
+      }
+      return -1;
+    }
 
-    var myIndex = find_id(myid);
+    var myIndex = theIndex(myid);
     if (myIndex >=0){
       console.log("myIndex => ",myIndex);
       // console.log(orders[myIndex].name); 
@@ -198,18 +209,6 @@ class App extends Component {
       
     }else {
         console.log("data not found ...",myIndex);
-    }
-
-    function find_id(xid) {
-      for(let x=0;x<order.length;x++){
-        // console.log(orders[x]);
-        console.log("for loop x -> ",x);
-        if (order[x].id === xid) {
-            // console.log("find the data..." , x);
-            return x;
-        }
-      }
-      return -1;
     }
   }
 
