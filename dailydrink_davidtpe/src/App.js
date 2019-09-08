@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './App.css';
 
+// 飲品 option
 const drink = [
   { value: '珍珠奶茶', label: '珍珠奶茶' },
   { value: '茉莉綠茶', label: '茉莉綠茶' },
@@ -14,13 +15,13 @@ const drink = [
   { value: '觀音奶茶', label: '觀音奶茶' },
   { value: '百香綠茶', label: '百香綠茶' }
 ]
-
+// 價格 option
 const price = [
   { value: '30', label: '小杯 30' },
   { value: '45', label: '中杯 45' },
   { value: '60', label: '大杯 60' }
 ]
-
+// 給 this.state.orderItem 設定初始值
 const initItem = {
   id:0,
   name:'珍珠奶茶',
@@ -30,10 +31,12 @@ const initItem = {
   remarks: ""
 }
 
+// App Component
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // 訂購資料
       orderList:[
         { 
           id: 1566699818972,
@@ -52,6 +55,7 @@ class App extends Component {
           remarks: "感謝"
         }
       ],
+      // Modal Form 的維護資料
       orderItem:{
         id:0,
         name:'',
@@ -60,19 +64,23 @@ class App extends Component {
         price: 45,
         remarks: ""
       },
-      modalShow: false,
-      method: 'C',
-      methodButton: '新增',
-      listIndex:-1
+      modalShow: false,         // Modal Form show (true/false)
+      method: 'C',              // 資料維護 (C新增/U修改/D刪除)
+      methodButton: '新增',      // Modal Form 執行按鈕 名稱
+      listIndex:-1              // 資料陣列索引
     }
   }
 
+  // 由於 Modal Form 裡的資料是指向 this.state.orderItem (物件型態)
+  // 一般的 = 複製物件乃淺層拷貝Shallow Copy
+  // 所以改為 Object.assign 做深層拷貝Deep Copy
+  // http://larry850806.github.io/2016/09/20/shallow-vs-deep-copy/
+  // ----------------------------------------------------------------
   // 新增紀錄(按鈕)
   newModalShow = () =>{
-    console.log("目前:",this.state.orderList);
-    let myItem = initItem;
+    console.log("orderList目前:",this.state.orderList);
+    let myItem = Object.assign({}, initItem); // 給予新的物件 deep copy
     myItem.id=Date.now();
-    console.log("New:",myItem);
     this.setState({
       orderItem : myItem,
       method: 'C',
@@ -84,8 +92,7 @@ class App extends Component {
 
   // U修改/D刪除 紀錄 (data單筆紀錄 , method方法 U/D , index -> orderItem陣列索引 )
   handModalShow = (data, method,index) => {
-    console.log(data, method , index);
-    console.log(this.state.orderList);
+    console.log("data目前:",data, method , index);
     // 顯示紀錄
     let myItem = data;
     let myMethodDesc = ''
@@ -105,54 +112,57 @@ class App extends Component {
 
   // Modal 按鈕 (C新增、U修改、D刪除)
   myButtonFunction = () =>{
-    if (this.state.method == 'C') {
-      // alert("新增");
+    // C新增
+    if (this.state.method === 'C') {
       let myItem = Object.assign({}, this.state.orderItem);  // 給予新的物件 deep copy
-      console.log("準備新增:",myItem);
       this.setState({
         orderList : this.state.orderList.concat(myItem),
         modalShow: false,
-        orderItem: initItem
+        orderItem: Object.assign({}, initItem)  // 給予新的物件 deep copy
       })
     }
-
-    if (this.state.method == 'U') {
+    // U修改
+    if (this.state.method === 'U') {
       let myItem = Object.assign({}, this.state.orderItem);  // 給予新的物件 deep copy
       console.log("準備修改:",myItem,this.state.listIndex);
       let myList = this.state.orderList;
       myList[this.state.listIndex] = myItem;
       this.setState({
         orderList : myList,
-        modalShow: false
+        modalShow: false,
+        orderItem: Object.assign({}, initItem), // 給予新的物件 deep copy
       })
     }
-
-    if (this.state.method == 'D') {
+    // D刪除
+    if (this.state.method === 'D') {
       let myItem = Object.assign({}, this.state.orderItem);  // 給予新的物件 deep copy
       console.log("準備刪除:",myItem,this.state.listIndex);
       let myList = this.state.orderList;
-      let splicorder = myList.splice(this.state.listIndex,1);
+      myList.splice(this.state.listIndex,1);
       this.setState({
         orderList : myList,
-        modalShow: false
+        modalShow: false,
+        orderItem: Object.assign({}, initItem) // 給予新的物件 deep copy
+
       })
     }
   }
 
-  // 關閉 Modal
+  // 關閉 Modal Form
   handleClose = () => {
     this.setState({
       modalShow: false
     })
   }
 
+  // 開始繪製畫面
   render() {
     // 製作 Select 物件的 Option
-    // 飲料
+    // 飲料 option
 		var drinkOptions = drink.map((drinkData,index) =>{
 			return <option key={index} value={drinkData.value}>{drinkData.label}</option>
     });
-    // 單價
+    // 單價 option
     var priceOptions = price.map((priceData,index) =>{
 			return <option key={index} value={priceData.value}>{priceData.label}</option>
     });
