@@ -64,17 +64,7 @@ class App extends Component {
       myRemarks: ''
     }
   }
-  componentDidMount(){
-    if(this.state.method === 'U' || this.state.method === 'D'){
-      this.setState({
-        myDrink: this.state.orderItem.name,
-        myUnitPrice: this.state.orderItem.unitPrice,
-        myNum: this.state.orderItem.num,
-        myPrice: this.state.orderItem.price,
-        myRemarks: this.state.orderItem.remarks
-      })
-    }
-  }
+  // 新增modal
   newModalShow = () => {
     this.setState({
       method: 'C',
@@ -89,9 +79,9 @@ class App extends Component {
       modalShow: true
     })
   }
-
+  // 張開modal 
   handModalShow = (data, mothod) => {
-    console.log(data, mothod)
+    // console.log(data, mothod)
     // SetState OrderItem, Method
     this.setState({
       myid: data.id,
@@ -104,13 +94,13 @@ class App extends Component {
       modalShow: true
     })
   }
-
+  // 關閉modal
   handleClose = () => {
     this.setState({
       modalShow: false
     })
   }
-  // 回呼 新增一筆訂單
+  // 新增一筆訂單
   create = () => {
     // console.log(xid, xdrink, xprice, xremarks)
     let newOrder = {
@@ -121,7 +111,7 @@ class App extends Component {
       price:this.state.myPrice,
       remarks:this.state.myRemarks
     };
-    console.log('newOrder', newOrder)
+    // console.log('newOrder', newOrder)
     this.setState({
       getOrder : this.state.getOrder.concat(newOrder),
       omyid: Date.now(),
@@ -135,7 +125,7 @@ class App extends Component {
     // console.log(this.state.getOrder)
   }
 
-  // 回呼 修改一筆訂單
+  // 修改一筆訂單
   myUpdate = () => {
     console.log(this.state.myid)
     // let newOrder = this.state.getOrder;
@@ -181,7 +171,7 @@ class App extends Component {
     }
   }
 
-  // 回呼 刪除一筆訂單
+  // 刪除一筆訂單
   myDelete = () => {
    
     var myid = this.state.myid;
@@ -221,13 +211,6 @@ class App extends Component {
       }
       return -1;
     }
-  }
-
-  myCheck = (data) => {
-    console.log(data)
-    this.setState({
-      orderItem: data
-    })
   }
 
   // 繪製畫面
