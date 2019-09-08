@@ -72,7 +72,7 @@ class App extends Component {
   }
 
   // 由於 Modal Form 裡的資料是指向 this.state.orderItem (物件型態)
-  // 一般的 = 複製物件乃淺層拷貝Shallow Copy
+  // 一般的物件 = 複製物件乃淺層拷貝Shallow Copy
   // 所以改為 Object.assign 做深層拷貝Deep Copy
   // http://larry850806.github.io/2016/09/20/shallow-vs-deep-copy/
   // ----------------------------------------------------------------
