@@ -1,4 +1,4 @@
-# 緯德科技
+# Daily Drink
 [gitHub 連結](https://github.com/capeta0507/DailyDrink)
 #### 進入首頁，可看到整個訂購清單（畫面上為預設資料）
 ![](https://i.imgur.com/YQfWY0M.png)
