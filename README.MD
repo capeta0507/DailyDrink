@@ -26,3 +26,6 @@
 4. dailydrink_davidtpe
 
     根據 dailydrink_single 來修改 (大師示範版))
+
+### 結果
+無聲卡.....
